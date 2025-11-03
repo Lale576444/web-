@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forkio - Revolutionary Editor</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,700" rel="stylesheet">
+    
+    <style>
+        /* Global Reset and Base Styles */
+        * {
+            margin: 30;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', Arial, sans-serif; 
+            color: #333;
+            line-height: 1;
+        }
+
+        .container {
+            width: 90%; 
+            max-width: 1100px; 
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- 1. Header & Hero Section --- */
+        .hero-section {
+            /* DÜZƏLİŞ: Fon şəkli və rəng */
+            background: url('images/main-bg.jpg') no-repeat center center/cover; 
+            color: white;
+            padding-bottom: 50px; 
+            min-height: 700px; 
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar-container {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 20px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: right;
+            align-items: right;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            margin-right: auto; 
+            margin-left: 9px;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif; 
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .buy-now {
+            background-color: #ffffff; 
+            color: black;
+            padding: 5px 40px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            padding-top: 5px; 
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size:50px;
+            margin-bottom: 1px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 10px;
+            margin-bottom: 5px; 
+            color: #8D81AC;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #ffffff; 
+            color: black;
+            padding: 15px 40px;
+            border-radius: 89px;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 100px;
+            margin-top: 30px;
+        }
+
+        .license-info {
+            font-size: 140px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- 2. Revolutionary Editor Section --- */
+        .editor-section {
+            background-color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .editor-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            color: #444;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .editor-slogan {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* DÜZƏLİŞ: Editor links rəngi */
+        .editor-buttons a {
+            display: inline-block;
+            color: #ffffff; /* Mavi rəng qoyuldu ki, görünsün */
+            padding: 0 10px;
+            margin: 0 10px;
+            font-size: 14px;
+            text-decoration: none; 
+        }
+
+        .editor-buttons a:not(:last-child):after {
+            content: " | ";
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        /* --- 3. Features & Code Section --- */
+        .features-code-section {
+            background-color: #f7f7f7;
+            padding: 80px 0;
+        }
+
+        .features-code-section .container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .features-list {
+            flex: 1;
+            text-align: left;
+        }
+
+        .features-list h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+            font-style: italic; 
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start; 
+            margin-bottom: 30px;
+        }
+
+        /* DÜZƏLİŞ: İkonun ölçüsü */
+        .feature-item img {
+            width: 50px; 
+            height: 50px;
+            margin-right: 15px;
+            margin-top: 5px; 
+        }
+
+        .feature-item h4 {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .code-screenshot {
+            flex: 1;
+            text-align: right;
+        }
+
+        .code-screenshot img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- 4. Testimonials/Clients Section --- */
+        .testimonials-section {
+            /* DÜZƏLİŞ: Fon şəkli və rəng */
+            background: url('images/pricing-bg.png') no-repeat center center/cover; 
+            background-color: #323544; /* Şəkil yüklənməsə, bu fon rəngi olsun */
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .testimonials-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .testimonials-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 150px;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            padding: 10px;
+        }
+
+        .testimonial-item img {
+            max-height: 40px; 
+            margin-bottom: 15px;
+        }
+        
+        /* DÜZƏLİŞ: Rəylərin mətnini ağ etdik */
+        .testimonial-item p {
+            font-size: 14px;
+            color: #ffffff; 
+            line-height: 1.5;
+        }
+
+        /* --- 5. Pricing Section --- */
+        .pricing-section {
+            /* DÜZƏLİŞ: Fon şəkli və rəng */
+            background: url('images/pricing-bg1.png') no-repeat center center/cover;
+            background-color: #5d5d5d; 
+            color: rgb(255, 255, 255);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-table {
+            display: flex;
+            justify-content: center;
+            
+            gap: 100px;
+        }
+
+        .pricing-card {
+            background: #463048;
+            border: 3px solid transparent;
+            padding: 30px 20px;
+            border-radius: 5px;
+            width: 250px;
+            color: white; /* DÜZƏLİŞ: Kartın içindəki yazılar ağ olsun */
+        }
+        
+        
+        /* DÜZƏLİŞ: Pricing içindəki list linklərini ağ etdik */
+        .pricing-card .pricing-features li {
+            color: white; 
+            margin-bottom: 5px;
+        }
+        
+        .pricing-card .pricing-features {
+            padding-left: 20px;
+            list-style: disc;
+            margin: 15px 0;
+        }
+        
+        .pricing-card .price-desc {
+            margin-bottom: 15px;
+        }
+
+    .pricing-card.highlighted {
+   
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.5) 100%), #4a4a6e; 
+    border-color: #6a6a99; 
+    transform: scale(1.05); 
+    z-index: 10;
+}
+
+        .pricing-card h4 {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .pricing-card .price {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .purchase-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .pricing-card.highlighted .purchase-btn {
+            background-color: #6a6a99;
+            color: #ffffff;
+            border-color: white;
+        }
+
+        /* ========================================= */
+        /* --- RESPONSIVE DİZAYN (MOBİL UYUQLUQ) --- */
+        /* ========================================= */
+
+        @media (max-width: 992px) {
+            .navbar {
+                flex-direction: column; 
+                align-items: center;
+            }
+
+            .nav-links {
+                margin: 150px 0; 
+                gap: 15px;
+            }
+            
+            .buy-now {
+                margin-bottom: 15px; 
+            }
+
+            .features-code-section .container {
+                flex-direction: column; 
+            }
+            
+            .code-screenshot {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            }
+
+            .pricing-table {
+                flex-direction: column; 
+                align-items: center;
+                gap: 30px;
+            }
+
+            .pricing-card {
+                width: 80%; 
+                max-width: 350px;
+            }
+            
+            .pricing-card.highlighted {
+                transform: none; 
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+                margin-bottom: 40px;
+            }
+            
+            .editor-buttons a:not(:last-child):after {
+                content: ""; 
+                display: block;
+            }
+            
+            .editor-buttons a {
+                display: block; 
+                margin: 10px auto;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="navbar-container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#"><img src="images/12.png" alt="Forkio        "></a> 
+                    <span class="logo-text">FORKIO   </span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#editor">Overview</a></li>
+                    <li><a href="#features">About Fork</a></li>
+                    <li><a href="#pricing">Buying Options</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+                <button class="buy-now">Buy Now</button>
+            </nav>
+        </div>
+
+        <div class="container">
+           <div class="hero-content">
+    
+    <h1>Fork App</h1>
+    
+    <p class="subtitle">A real gamechanger in the world of web development</p> 
+    
+    <p class="version">V. 2.8 FOR MAC AND WINDOWS</p> 
+
+
+   <div class="download-box">
+        <a href="#" class="download-btn">Download For Free Now</a>
+        <p class="license-info">Unlimited 30-Days Trial Version</p>
+    </div>
+</div>
+        </div>
+    </header>
+    
+
+    <section class="editor-section" id="editor">
+        <div class="container">
+            <h2>REVOLUTIONARY EDITOR</h2>
+            <p class="editor-slogan">Aenean cursus imperdiet et al himenaeos. Aliquam phasellus dallanator vulputate dignissim. Sed id tellus et quam auctor venenatis eget efficitur.</p>
+            <div class="editor-buttons">
+                <img src="images/stats.png" alt="Watch Star Fork Stats" class="github-stats">
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="features-code-section" id="features">
+        <div class="container">
+            
+
+            <div class="features-list">
+                <h3><Here is what you get></h3>
+                <div class="feature-item">
+                    <img src="images/feature-icon-1.png" alt="Icon"> 
+                    <div>
+                        <h4>Incredibly Powerful Tool</h4>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <img src="images/feature-icon-2.png" alt="Icon">
+                    <div>
+                        <h4>Experimental Stuff</h4>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <img src="images/feature-icon-3.png" alt="Icon">
+                    <div>
+                        <h4>Created To Make This Work Easier</h4>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <img src="images/feature-icon-4.png" alt="Icon">
+                    <div>
+                        <h4>Incredibly Powerful Tool</h4>
+                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-block">
+            <div class="code-screenshot">
+                <h3 class="code-block-title">&lt;Here is what you get&gt;</h3>
+                <img src="images/code-screenshot.png" alt="Code Screenshot">
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h3>People Are Talking About Fork</h3>
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <img src="images/logo-smashing.png" alt="Smashing Logo">
+                    <p>Inland is a digital agency in New York. We love working with Fork. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="images/logo-codrops.png" alt="Codrops Logo">
+                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="images/men.png" alt="men">
+                    <p>In efficitur in velit et tempus. Duis nec odio dapibus, suscipit erat fringilla, imperdiet nibh. Morbi tempus auctor felis ac vehicula. </p>
+                </div>
+
+                <div class="testimonial-item">
+                    <img src="images/logo-pixelbuddha.png" alt="Pixel Buddha Logo">
+                    <p>Inland is a digital agency in New York. We love working with Fork. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="images/logo-creativebloq.png" alt="Creative Bloq Logo">
+                    <p>Inland is a digital agency in New York. We love working with Fork. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="images/logo-tnw.png" alt="TNW Logo">
+                    <p>Inland is a digital agency in New York. We love working with Fork. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h3>Fork Subscription Pricing</h3>
+            <div class="pricing-table">
+                <div class="pricing-card">
+                    <h4>STUDENTS</h4>
+                    <p class="price">$29</p>
+                    <p class="price-desc">PER LICENSE</p>
+                    <ul class="pricing-features">
+                        <li>Personal Use Only</li>
+                        <li>Purchase License</li>
+                    </ul>
+                    <a href="#" class="purchase-btn">PURCHASE</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h4>PROFESSIONAL</h4>
+                    <p class="price">$59</p>
+                    <p class="price-desc">PER MONTH</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited Use</li>
+                        <li>Great Support</li>
+                    </ul>
+                    <a href="#" class="purchase-btn">PURCHASE</a>
+                </div>
+
+                <div class="pricing-card highlighted">
+                    <h4>AGENCY</h4>
+                    <p class="price">$99</p>
+                    <p class="price-desc">PER MONTH</p>
+                    <ul class="pricing-features">
+                        <li>1-12 Team Members</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <a href="#" class="purchase-btn">PURCHASE</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h4>ENTERPRISE</h4>
+                    <p class="price">$159</p>
+                    <p class="price-desc">PER MONTH</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited Team Members</li>
+                        <li>24/7 Phone Support</li>
+                    </ul>
+                    <a href="#" class="purchase-btn">PURCHASE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
